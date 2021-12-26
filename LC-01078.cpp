@@ -20,7 +20,7 @@ public:
             tf = ts;
             ts = now;
             now = text.substr(s, i-s);
-            if( (tf == first) && (ts == second) )
+            if((tf == first) && (ts == second))
                 ans.push_back(now);
         }
         return ans;

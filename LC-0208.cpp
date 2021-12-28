@@ -17,9 +17,9 @@ public:
     }
     
     void insert(string word) {
-        int len = word.length(), p = 1;
-        for(int i=0; i<len; ++i) {
-            int ch = word[i] - 'a';
+        int p = 1;
+        for(auto chr : word) {
+            int ch = chr - 'a';
             if(trie[p][ch] == 0) trie[p][ch] = ++tot;
             p = trie[p][ch];
         }
@@ -27,18 +27,18 @@ public:
     }
     
     bool search(string word) {
-        int len = word.length(), p = 1;
-        for(int i=0; i<len; ++i) {
-            p = trie[p][word[i]-'a'];
+        int p = 1;
+        for(auto chr : word) {
+            p = trie[p][chr -'a'];
             if(p == 0) return false;
         }
         return end[p];
     }
     
     bool startsWith(string prefix) {
-        int len = prefix.length(), p = 1;
-        for(int i=0; i<len; ++i) {
-            p = trie[p][prefix[i]-'a'];
+        int p = 1;
+        for(auto chr : prefix) {
+            p = trie[p][chr-'a'];
             if(p == 0) return false; 
         }
         return true;
